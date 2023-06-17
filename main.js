@@ -18,7 +18,7 @@ alert("Bienvenido/a, " + nombre)
 
 let edad = Number(prompt("Ingrese su edad"))
 
-let mensaje = "Seleccione una opción: \n1- Ver lista de productos \n2- Comprar productos \n3- Ver precio de cada producto \n4- Ver carrito \n5- Ver total del carrito y finalizar compra \n0- Salir"
+let mensaje = "Seleccione una opción: \n1- Ver lista de productos \n2- Comprar productos \n3- Ver precio de cada producto \n4- Ver productos más económicos \n5- Ver carrito \n6- Ver total del carrito y finalizar compra \n0- Salir"
 
 let respuesta
 
@@ -60,17 +60,19 @@ if (edad < 18) {
                 let productosPrecio = productos.map((producto) => producto.id + " - " + producto.nombre + " - $" + producto.precio + "\n")
                 alert(productosPrecio)          
             } else if (respuesta === 4) {
-                if (carrito.lenght > 0) {
+                let productosEconomicos = alert(productos.filter(((el) => el.precio < 2000)))
+            } else if (respuesta === 5) {
+                 if (carrito.length > 0) {
                     alert(listar(carrito))
                 } else {
                     alert("Primero debe ingresar un producto")
                 }
-            } else if (respuesta === 5) {
-                let precioFinal = carrito.reduce((acum, producto) => acum + carrito.subtotal, 0)
-                alert(precioFinal)
+            } else if (respuesta === 6){
+                 let precioFinal = carrito.reduce((acum, producto) => acum + producto.subtotal, 0)
+                alert("El total de su carrito es de: " + precioFinal)
                 validarTotal(precioFinal)
             } else {
-                alert("Debe ingresar un número del 0 al 5") 
+                alert("Debe ingresar un número del 0 al 6") 
             }
         } while (respuesta !== 0)
 alert("Muchas gracias por su visita") 
