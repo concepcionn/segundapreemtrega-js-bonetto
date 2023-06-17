@@ -60,7 +60,8 @@ if (edad < 18) {
                 let productosPrecio = productos.map((producto) => producto.id + " - " + producto.nombre + " - $" + producto.precio + "\n")
                 alert(productosPrecio)          
             } else if (respuesta === 4) {
-                let productosEconomicos = alert(productos.filter(((el) => el.precio < 2000)))
+                let productosEconomicos = productos.filter(((el) => el.precio < 2000))
+                alert(listar(productosEconomicos))
             } else if (respuesta === 5) {
                  if (carrito.length > 0) {
                     alert(listar(carrito))
